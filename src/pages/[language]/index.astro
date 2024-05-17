@@ -1,0 +1,47 @@
+---
+import { useI18n } from '~/composables/use-i18n';
+import { allowedLanguageString } from '~/i18n';
+import PageLayout from '~/layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+  return allowedLanguageString.map((language) => {
+    return {
+      params: { language },
+    };
+  });
+}
+
+const pathname = Astro.url.pathname;
+
+const { t } = useI18n(pathname);
+---
+
+<PageLayout title={t.pages.index.title}>
+  <div class="relative isolate overflow-hidden from-indigo-100/20 bg-gradient-to-b pt-14">
+    <div
+      class="absolute inset-y-0 right-1/2 w-[200%] origin-top-right skew-x-[-30deg] bg-white shadow-indigo-600/10 shadow-xl ring-1 ring-indigo-50 -z-10 -mr-96 lg:-mr-96 sm:-mr-80"
+      aria-hidden="true"
+    >
+    </div>
+    <div class="mx-auto max-w-7xl px-6 py-2rem lg:px-8">
+      <div
+        class="mx-auto max-w-2xl lg:grid lg:grid-cols-2 xl:grid-cols-1 xl:grid-rows-1 lg:mx-0 lg:max-w-none lg:gap-x-16 lg:gap-y-6 xl:gap-x-8"
+      >
+        <h1 class="max-w-2xl text-4xl text-gray-900 font-bold tracking-tight xl:col-auto lg:col-span-2 sm:text-6xl">
+          {t.pages.index.title}
+        </h1>
+        <div class="mt-6 max-w-xl xl:row-start-1 xl:col-end-1 lg:mt-0">
+          <p class="text-lg text-gray-600 leading-8">
+            {t.pages.index.introduction}
+          </p>
+        </div>
+        <img
+          src="https://dummyimage.com/800x800/000000/ffffff.png&text=Company+Image"
+          alt=""
+          class="mt-10 aspect-[6/5] max-w-lg w-full rounded-2xl object-cover xl:row-span-2 xl:row-end-2 lg:mt-0 sm:mt-16 xl:mt-36 lg:max-w-none"
+        />
+      </div>
+    </div>
+    <div class="absolute inset-x-0 bottom-0 h-24 from-white bg-gradient-to-t -z-10 sm:h-32"></div>
+  </div>
+</PageLayout>

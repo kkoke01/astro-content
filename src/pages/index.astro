@@ -1,0 +1,6 @@
+---
+import AutoDetectLanguage from '~/components/AutoDetectLanguage.vue';
+---
+
+<!-- 会优先跳转到客户端语言的页面 -->
+<AutoDetectLanguage client:only="vue" pathname={''} />

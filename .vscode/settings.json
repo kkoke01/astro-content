@@ -1,0 +1,37 @@
+{
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "astro",
+        "typescript",
+        "typescriptreact",
+        "typescriptvue"
+    ],
+    "files.associations": {
+        "*.mdx": "markdown"
+    },
+    "prettier.documentSelectors": [
+        "**/*.astro"
+    ],
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.defaultFormatter": "astro-build.astro-vscode",
+    "eslint.experimental.useFlatConfig": true,
+    "cSpell.words": [
+        "Astro",
+        "astrojs",
+        "attributify",
+        "composables",
+        "iconify",
+        "nanostores",
+        "partytown",
+        "tseslint",
+        "unocss"
+    ],
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "always",
+    }
+}

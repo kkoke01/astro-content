@@ -1,0 +1,66 @@
+---
+import ProductLayout from '~/layouts/ProductLayout.astro';
+import { allowedLanguageString } from '~/i18n';
+import { usePages } from '~/composables/use-pages';
+import { useI18n } from '~/composables/use-i18n';
+
+export async function getStaticPaths() {
+  const categories = ['category1', 'category2'];
+  return allowedLanguageString.flatMap((language) =>
+    categories.map((categoryId) => ({ params: { language, categoryId } }))
+  );
+}
+const { language, categoryId } = Astro.params;
+
+const pages = (await usePages()).filter((page) => {
+  return page.slug.split('/')[0] === language && page.slug.split('/')[2] === categoryId;
+});
+
+const pathname = Astro.url.pathname;
+const { t } = useI18n(pathname);
+---
+
+<ProductLayout title={t.pages.product.categoryId[categoryId as keyof typeof t.pages.product.categoryId]}
+  ><div>
+    {
+      pages.length > 0 ? (
+        <div grid grid-cols-1 gap-x-6 gap-y-10 bg-white px-2rem py-1rem lg:grid-cols-4 sm:grid-cols-2 xl:gap-x-8>
+          {pages.map((page) => (
+            <a relative cursor-pointer href={`/${page.slug}`}>
+              <div
+                aspect-h-1
+                aspect-w-1
+                lg:aspect-none
+                w-full
+                overflow-hidden
+                rounded-md
+                bg-gray-200
+                group-hover:opacity-75
+              >
+                <img src={page.data.poster} h-full w-full object-contain />
+
+                <div mt-4 flex justify-between>
+                  <div>
+                    <h3 text-sm text-gray-700>
+                      <h3>{page.data.title}</h3>
+                    </h3>
+                    <p mt-1 text-sm text-gray-500>
+                      {page.data.description}
+                    </p>
+                  </div>
+                  <p text-sm text-gray-900 font-medium>
+                    {page.data.price}
+                  </p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div flex justify-center py-2rem>
+          <h1>{t.pages.product.categoryId.categoryDoNotExist}</h1>
+        </div>
+      )
+    }
+  </div>
+</ProductLayout>

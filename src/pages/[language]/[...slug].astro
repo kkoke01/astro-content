@@ -1,0 +1,25 @@
+---
+import { usePages } from '~/composables/use-pages';
+import ContentLayout from '~/layouts/ContentLayout.astro';
+
+// 1. 为每个集合条目生成一个新路径
+export async function getStaticPaths() {
+  const pages = await usePages();
+  return pages.map((page) => {
+    const parts = page.slug.split('/');
+    const language = parts.shift();
+    const slug = parts.join('/');
+    return {
+      params: { language, slug },
+      props: { page },
+    };
+  });
+}
+// 2. 当渲染的时候，你可以直接从属性中得到条目
+const { page } = Astro.props;
+const { Content } = await page.render();
+---
+
+<ContentLayout title={page.data.title}>
+  <Content />
+</ContentLayout>

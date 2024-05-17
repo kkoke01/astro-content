@@ -1,0 +1,18 @@
+---
+import { useI18n } from '~/composables/use-i18n';
+
+import NavLink from '~/components/NavLink.vue';
+
+const pathname = Astro.url.pathname;
+const { t, pathLanguage } = useI18n(pathname);
+---
+
+<footer bg-surface-400 shadow py-1rem>
+  <nav flex flex-col items-center justify-center gap-0.5rem lg:flex-row>
+    <NavLink href={`/${pathLanguage}/products`} pathname={pathname}>{t.components.pageFooter.allProducts} </NavLink>
+  </nav>
+  <!-- <nav flex flex-col items-center justify-center gap-0.5rem lg:flex-row>
+    <a href={`/${pathLanguage}/products`}>{t.components.pageFooter.allProducts}</a>
+  </nav> -->
+  <p mt-0.5rem text-center text-xs>&copy; Copyright Example</p>
+</footer>

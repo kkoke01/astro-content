@@ -1,0 +1,39 @@
+---
+import GoogleFont from '~/components/GoogleFont.astro';
+import PageFooter from '~/components/PageFooter.astro';
+import PageHeader from '~/components/PageHeader.vue';
+import { useI18n } from '~/composables/use-i18n';
+interface Props {
+  title?: string | undefined;
+}
+
+const { title } = Astro.props;
+const pathname = Astro.url.pathname;
+const { pathLanguage } = useI18n(pathname);
+---
+
+<!doctype html>
+<html lang={pathLanguage}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <GoogleFont language={pathLanguage} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div relative min-h-screen w-full flex flex-col bg-white dark:bg-dark>
+      <div sticky top-0 z-21 h-16>
+        <PageHeader client:load pathname={pathname} />
+      </div>
+      <div flex grow justify-center px-1rem>
+        <div mx-auto max-w-7xl w-full>
+          <slot />
+        </div>
+      </div>
+      <PageFooter />
+    </div>
+  </body>
+</html>

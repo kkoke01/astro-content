@@ -1,0 +1,12 @@
+---
+import PageLayout from '~/layouts/PageLayout.astro';
+import { useI18n } from '~/composables/use-i18n';
+const pathname = Astro.url.pathname;
+const { t } = useI18n(pathname);
+---
+
+<PageLayout>
+  <div flex justify-center py-2rem>
+    <h1>{t.pages.notFound.word}</h1>
+  </div>
+</PageLayout>

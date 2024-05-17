@@ -1,0 +1,20 @@
+---
+import AutoDetectLanguage from '~/components/AutoDetectLanguage.vue';
+import { usePages } from '~/composables/use-pages';
+
+export async function getStaticPaths() {
+  const pages = (await usePages()).map((page) => {
+    // 去掉语言前缀，只保留路径如 /about
+    const parts = page.slug.split('/').slice(1);
+    const slug = parts.join('/');
+    return {
+      params: { slug },
+    };
+  });
+  return [...pages, { params: { slug: 'products/category1' } }];
+}
+const { slug } = Astro.params;
+---
+
+<!-- 因为删掉了路径中的语言，所以会优先跳转到客户端语言的页面 -->
+<AutoDetectLanguage client:only="vue" pathname={slug} />

@@ -1,0 +1,46 @@
+{
+  "name": "astro-content-template",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.10",
+    "@astrojs/mdx": "^2.3.1",
+    "@astrojs/partytown": "^2.1.0",
+    "@astrojs/sitemap": "^3.1.4",
+    "@astrojs/vue": "^4.1.0",
+    "@nanostores/persistent": "^0.10.1",
+    "@nanostores/vue": "^0.10.0",
+    "@unocss/reset": "^0.59.4",
+    "astro": "^4.7.0",
+    "vue": "^3.4.26"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.1.1",
+    "@iconify-json/ri": "^1.1.20",
+    "@typescript-eslint/parser": "^7.8.0",
+    "@unocss/preset-attributify": "^0.59.4",
+    "@unocss/preset-icons": "^0.59.4",
+    "@unocss/preset-tagify": "^0.59.4",
+    "@unocss/preset-typography": "^0.59.4",
+    "@unocss/reset": "^0.59.4",
+    "eslint": "^9.1.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-astro": "^1.1.2",
+    "eslint-plugin-vue": "^9.25.0",
+    "globals": "^15.1.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.13.0",
+    "sharp": "^0.33.3",
+    "typescript": "^5.4.5",
+    "typescript-eslint": "^7.8.0",
+    "unocss": "^0.59.4"
+  }
+}

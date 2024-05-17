@@ -1,0 +1,35 @@
+---
+import type { AllowedLanguage } from '~/i18n';
+interface Props {
+  language: AllowedLanguage | undefined;
+}
+
+const { language } = Astro.props;
+---
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+{
+  language === 'ja' ? (
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Noto+Sans+Mono:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', Meiryo,
+          sans-serif;
+      }
+    </style>
+   ) : (
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC&family=Noto+Sans+Mono:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html {
+        font-family: 'Noto Sans SC', 'Hiragino Kaku Gothic ProN', Meiryo,
+          sans-serif;
+      }
+    </style>
+  )
+}
