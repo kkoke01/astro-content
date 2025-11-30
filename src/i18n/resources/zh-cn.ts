@@ -35,11 +35,5 @@ export const zhCN: Resource = {
     notFound: {
       word: '页面未找到',
     },
-    products: {
-      categories: {
-        1: '类别1',
-        2: '类别2',
-      },
-    },
   },
 };
